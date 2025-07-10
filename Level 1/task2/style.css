@@ -1,0 +1,318 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+body {
+  background: radial-gradient(circle at top left, #e3f2fd, #ffffff);
+  color: #2b2e4a;
+  text-align: center;
+  line-height: 1.6;
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background: linear-gradient(to right, #0d47a1, #42a5f5);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: fadeDown 1s ease-in-out;
+}
+.header .logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffca28;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  gap: 2rem;
+}
+.navbar a {
+  position: relative;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.3rem;
+  transition: color 0.3s;
+}
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 0%;
+  background: #ffca28;
+  transition: width 0.3s ease-in-out;
+}
+.navbar a:hover,
+.navbar a.active {
+  color: #ffca28;
+}
+.navbar a:hover::after,
+.navbar a.active::after {
+  width: 100%;
+}
+#menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Section & Headings */
+section {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: linear-gradient(to right, #9693ed, #c6f1f1);
+  border-bottom: 1px solid #ddd;
+}
+h2 {
+  font-size: 2.8rem;
+  color: #1565c0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Home */
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.home-img img {
+  width: 280px;
+  height: 280px; /* Make it square */
+  border-radius: 50%;
+  border: 5px solid #ffca28;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease;
+  object-fit: cover; /* Keeps the image proportional and fills the circle */
+}
+
+.home-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.home-img img:hover {
+  transform: scale(1.05);
+}
+.home-text {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.home-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  animation: slideIn 1s ease-in-out;
+  color: #0d47a1;
+}
+.home-text span {
+  color: #ff5328;
+  font-weight: bold;
+}
+.home-text .btn {
+  margin-top: 1.2rem;
+  padding: 0.8rem 1.6rem;
+  background: #ffca28;
+  color: #222;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.home-text .btn:hover {
+  background: #ffe57f;
+  transform: scale(1.08);
+}
+
+/* Skills */
+.skills ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+.skills li {
+  padding: 1rem;
+  text-align: center;
+  background: linear-gradient(145deg, #e0e0e0, #ffffff);
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeUp 1s ease-in-out;
+}
+.skills li:hover {
+  background: #ffca28;
+  color: #222;
+  transform: translateY(-6px);
+}
+
+/* Projects */
+.project-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.project-card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+  animation: fadeUp 1s ease-in-out;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+.project-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #2196f3;
+  font-weight: 500;
+  text-decoration: none;
+}
+.card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal {
+  opacity: 0;
+}
+.reveal.reveal-visible {
+  opacity: 1;
+}
+
+/* Education */
+.edu-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.edu-card {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeUp 1s ease-in-out;
+}
+
+/* Contact */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  font-size: 2rem;
+  animation: fadeIn 1s ease-in-out;
+}
+.social-icons a {
+  color: inherit;
+  transition: transform 0.3s, color 0.3s;
+}
+.social-icons a:hover {
+  color: #ffca28;
+  transform: scale(1.15);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #0d47a1;
+  color: white;
+  font-size: 0.95rem;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    flex-direction: column;
+    background: #1976d2;
+    width: 220px;
+    padding: 1rem;
+    transition: right 0.4s ease;
+    border-bottom-left-radius: 12px;
+  }
+  .navbar.active {
+    right: 0;
+  }
+  #menu-icon {
+    display: inline-block;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
