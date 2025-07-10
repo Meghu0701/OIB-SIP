@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter</title>
+    <style>
+      body {
+        background: linear-gradient(to right, #033b40, #7ad5e5);
+        font-family: "Segoe UI", sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 80px auto;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px 25px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #f9c74f;
+        text-shadow: 1px 1px 4px #000;
+      }
+
+      input,
+      select {
+        width: 80%;
+        padding: 10px;
+        margin: 15px 0;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        outline: none;
+        background-color: #fff;
+        color: #333;
+      }
+
+      select {
+        background-color: #fff;
+      }
+
+      button {
+        background-color: #f39c12;
+        color: #fff;
+        padding: 10px 20px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+      }
+
+      button:hover {
+        background-color: #d68910;
+        transform: scale(1.05);
+      }
+
+      .result {
+        margin-top: 25px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #e0f7fa;
+        text-shadow: 1px 1px 2px #000;
+      }
+
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: 500;
+        color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🌡 Temperature Converter</h1>
+
+      <label for="temperature">Enter Temperature:</label>
+      <input type="number" id="temperature" placeholder="Enter value" />
+
+      <label for="fromUnit">From Unit:</label>
+      <select id="fromUnit">
+        <option value="celsius">Celsius (°C)</option>
+        <option value="fahrenheit">Fahrenheit (°F)</option>
+        <option value="kelvin">Kelvin (K)</option>
+      </select>
+
+      <label for="toUnit">To Unit:</label>
+      <select id="toUnit">
+        <option value="fahrenheit">Fahrenheit (°F)</option>
+        <option value="celsius">Celsius (°C)</option>
+        <option value="kelvin">Kelvin (K)</option>
+      </select>
+
+      <button onclick="convertTemperature()">Convert</button>
+
+      <div class="result" id="result"></div>
+    </div>
+
+    <script>
+      function convertTemperature() {
+        const temp = parseFloat(document.getElementById("temperature").value);
+        const from = document.getElementById("fromUnit").value;
+        const to = document.getElementById("toUnit").value;
+        const resultElement = document.getElementById("result");
+
+        if (isNaN(temp)) {
+          resultElement.textContent = "Please enter a valid number!";
+          return;
+        }
+
+        let result;
+
+        if (from === to) {
+          result = temp;
+        } else if (from === "celsius" && to === "fahrenheit") {
+          result = (temp * 9) / 5 + 32;
+        } else if (from === "fahrenheit" && to === "celsius") {
+          result = ((temp - 32) * 5) / 9;
+        } else if (from === "celsius" && to === "kelvin") {
+          result = temp + 273.15;
+        } else if (from === "kelvin" && to === "celsius") {
+          result = temp - 273.15;
+        } else if (from === "fahrenheit" && to === "kelvin") {
+          result = ((temp - 32) * 5) / 9 + 273.15;
+        } else if (from === "kelvin" && to === "fahrenheit") {
+          result = ((temp - 273.15) * 9) / 5 + 32;
+        }
+
+        resultElement.textContent = `Converted Temperature: ${result.toFixed(
+          2
+        )}° ${to.charAt(0).toUpperCase()}`;
+      }
+    </script>
+  </body>
+</html>
